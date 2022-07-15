@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<!--Max Ma-->
+	<html>
+		<head>
+			<title> RPS </title>
+			<script>
+			function initialize()
+			{
+				chose = "Nothing";
+				compchose = "Nothing";
+				comment = document.getElementById("msg");
+				comment.innerHTML = "Choose your object to start the game!";
+				playerwin = 0;
+				playerlose = 0;
+				compwin = 0;
+				complose = 0;
+				totalrounds = 0;
+				iwin = document.getElementById("playerwincount");
+				ilose = document.getElementById("playerlosecount");
+				itwin = document.getElementById("compwincount");
+				itlose = document.getElementById("complosecount");
+				totcount = document.getElementById("totalroundcount");
+				display();
+			}
+			function picked(rockpaperscissors)
+			{
+				chose = rockpaperscissors;
+				compchose = (Math.floor(Math.random() * 3 + 1));
+				checkchoice();
+			}
+			function checkchoice()
+			{
+				if (compchose == 1)
+				{
+					if(chose == 1)
+					{
+						comment.innerHTML = "It's a tie! " + "The computer chose Rock.";
+						totalrounds++;
+						display();
+					
+					}
+					else
+					{
+						if(chose == 2)
+						{
+							comment.innerHTML = "You're a winner! " + "The computer chose Rock.";
+							playerwin++;
+							complose++;
+							totalrounds++;
+							display();
+
+						}
+						else
+						{
+							if(chose == 3)
+							{
+								comment.innerHTML = "You Lost! " + "The computer chose Rock.";
+								playerlose++;
+								compwin++;
+								totalrounds++; 
+								display();
+							}
+						}
+					}
+				}
+				else{
+					if(compchose == 2)
+					{
+						if(chose == 1)
+						{
+							comment.innerHTML = "You Lost! " + "The computer chose Paper.";
+							playerlose++;
+							compwin++;
+							totalrounds++;
+							display();
+
+						}
+						else{
+							if(chose == 2)
+							{
+								comment.innerHTML = "It's a tie! " + "The computer chose Paper.";
+								totalrounds++;
+								display();
+
+							}
+							else{
+								if(chose == 3)
+								{
+									comment.innerHTML = "You're a winner! " + "The computer chose Paper.";
+									playerwin++;
+									complose++;
+									totalrounds++;
+									display();
+								}
+							}
+						}
+					}
+					else{
+						if(compchose == 3)
+						{
+							if(chose == 1)
+							{
+								comment.innerHTML = "You're a winner! " + "The computer chose Scissors.";
+								playerwin++;
+								complose++;
+								totalrounds++;
+								display();
+							}
+							else{
+								if(chose == 2)
+								{
+									comment.innerHTML = "You Lost! " + "The computer chose Scissors.";
+									playerlose++;
+									compwin++;
+									totalrounds++;
+									display();
+								}
+								else{
+									if(chose == 3)
+									{
+										comment.innerHTML = "It's a tie! " + "The computer chose Scissors.";
+										totalrounds++;
+										display();
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			function display()
+			{
+				iwin.innerHTML = playerwin;
+				ilose.innerHTML = playerlose;
+				itwin.innerHTML = compwin;
+				itlose.innerHTML = complose;
+				totcount.innerHTML = totalrounds;
+			}
+			</script>
+		</head>
+		<body onload = "initialize();">
+			<h3>
+				Pick either Rock, Paper, or Scissors and play against the computer.
+			</h3>
+			<div>
+				<img src = "rock.png" onclick = "picked(1);" />
+				<img src = "paper.png" onclick = "picked(2);" />
+				<img src = "scissors.png" onclick = "picked(3);" />
+				<br /> <br />
+				<h2><span id="msg"></span></h2>
+
+
+				<h2>
+					Your Win Count: <span id="playerwincount">0</span> &nbsp &nbsp &nbsp &nbsp
+					Your Losses: <span id="playerlosecount">0</span>
+				</h2>
+				</p>
+
+				<p>
+				<h2>
+					Computer Win Count: <span id="compwincount">0</span> &nbsp &nbsp &nbsp &nbsp
+					Computer Losses: <span id="complosecount">0</span>
+				</h2>
+				<p />
+
+				
+				<h2>Total Rounds Played: <span id="totalroundcount">0</span></h2>
+			</div>
+			<style>
+				body
+				{
+					background-color: black;
+				}
+				h3
+				{
+					text-align: center;
+					font-family: copperplate gothic;
+					color: darkred;
+				}
+				h2
+				{
+					text-align: center;
+					font-family: times new roman;
+					color: green;
+				}
+				div
+				{
+					display: block;
+					text-align: center;
+				}
+				#msg
+				{
+					font-family: times new roman;
+					color: green;
+				}
+			</style>
+		</body>
+	</html>

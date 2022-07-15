@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<!-- Max Ma -->
+
+<html>
+	
+	<head> 
+		<title> Europe </title>
+		<link rel="stylesheet" href="pages.css">
+		<script>
+			function initialize()
+			{
+				picturearray1 = ["david.jpg", "sanlorenzo.png", "sistine.jpg", "athens.jpg", "x", "x"];
+				picturearray2 = ["x", "x", "loves.jpg", "mary.jpg", "calling.jpg", "night.png"];
+				picturearray3 = ["vitruvian.jpg", "statua.jpg", "giorgio.jpg", "madonna.jpg", "dance.jpg", "arcadia.jpg"];
+				namearray1 = ["David - Donatello", "San Lorenzo - Brunelleschi", "Sistine Chapel - Michelangelo", "The School of Athens - Raphael Sanzio", "x", "x"];
+				namearray2 = ["x", "x", "The Loves of the Gods - Annibale Carracci", "Assumption of the Virgin - Annibale Carracci", "The Calling of St. Matthew - Caravaggio", "The Night Watch - Rembrandt"];
+				namearray3 = ["The Vitruvian Man - Leonardo da Vinci", "De Statua -  Leon Battista Alberti", "Church of San Giorgio Maggiore, Venice - Andrea Palladio", "The Sistine Madonna - Raphael Sanzio", "A Dance to the Music of Time - Nicolas Poussin", "Et in Arcadia ego - Nicolas Poussin"];
+				infoarray = ["Probably the most iconic of European art styles, the Renaissance, was a time of prosperity, where art, science, literature, and philosophy experienced great advancements. In terms of art, the Renaissance is characterized by highly decorative pieces that focus on classical antiquity. Beginning in Italy, the Renaissance art movement was influenced by the state of Northern Europe in terms of religion, economy, and lifestyle. For instance, the Medici family gained their wealth from the trade business and were avid art collectors. In addition, oil painting was improved by Dutch artists such as Jan Van Eyck, which led to revolutionary changes in the way we view art today. There was an overall shift towards realism and more thought put into the perspective of artworks, making the viewers feel as if it was a natural element of their surroundings. Innovations such as these are why the period of the Renaissance was able to prosper for as long as it did, extending from the late 14th century all the way to 16th century.", "Starting in the late 17th century, the Baroque art style flourished to become one of the most extravagant and ornate styles in European history. It lasted until late 18th century and was dominated by the elements of contrast, use of light, movement and action, and detail. In order to counter the simplicity of the Protestant churches, Catholic Churches preferred the use of this style to depict religious figures. Many Baroque artists, one of the most famous being Michelangelo Merisi da Caravaggio, stylized their paintings in this way to intensify the stories of The New Testament and other biblical references. Caravaggio initiated the Baroque art style with the iconic use of chiaroscuro, which helps create strong tonal contrasts in paintings. The dramatic nature of this technique, in addition to the already existent Renaissance style, formed physically and psychologically appealing pieces that the Baroque style consisted of.", "This formal and rather restrained art style remains to be a highly respected art form even today. It began in the Greco-Roman world and can be described as a style that dominated the Age of Enlightenment and 20th century Neoclassicism. Classicism describes the foundation of art before the Renaissance, which reshaped classism to be more structural and true to reality. It is known for harmony and balance within the artwork. It uses idealized figures and shapes, creating an emotionally neutral artwork. In classicism, color is always subordinated to line and composition. Classicism declined in around the 19th and 20th century because it was not as widespread as before."];
+				stylearray = ["Renaissance", "Baroque", "Classicism" ];
+				image = document.getElementById("mainimg");
+				picname = document.getElementById("name");
+				information = document.getElementById("infobox");
+				title = document.getElementById("imgtitle");
+				styletype = document.getElementById("artstyle");
+				idx = 0;
+				period = "15";
+				type = "renaissance";
+				infoidx = 0;
+				display();
+			}
+			
+			function showmenu()
+			{
+				document.getElementById("mydrop").classList.toggle("show");
+			}
+			
+			function swappics1()
+			{
+				eval(("period") +  " = '15'");
+				idx = 0;
+				display();
+			}
+			
+			function swappics2()
+			{
+				eval(("period") +  " = '16'");
+				idx = 2;
+				display();
+			}
+			
+			function swappics3()
+			{
+				eval(("period") +  " = '17'");
+				idx = 4;
+				display();
+			}
+			
+			function changepictures(num)
+			{
+				//use of button in order to scroll through images from array for one specific art style in north america
+				idx += num;
+				if (eval("period") == "15")
+				{	
+					if (idx <= 0)
+					{
+						idx = 0;
+					}
+					else
+					{
+						if (idx >= 1)
+						{
+							idx = 1;
+						}
+					}
+				}
+				if (eval("period") == "16")
+				{
+					if (idx <= 2)
+					{
+						idx = 2;
+					}
+					else
+					{
+						if (idx >= 3)
+						{
+							idx = 3;
+						}
+					}
+				}
+				if (eval("period") == "17")
+				{
+					if (idx <= 4)
+					{
+						idx = 4;
+					}
+					else
+					{
+						if (idx >= 5)
+						{	
+							idx = 5;
+						}
+					}
+				}
+				display();
+			}
+			
+			function changeinfo(numb)
+			{
+				//use of button to change the information on art styles in north america
+				
+				infoidx += numb;
+				if (infoidx <= 0)
+				{
+					infoidx = 0;
+					idx = 0;
+				}
+				else
+				{
+					if (infoidx >= 2)
+					{
+						infoidx = 2;
+					}
+				}
+				if (infoidx == 0)
+				{	
+					eval(("type") +  " = 'renaissance'");
+					eval(("period") + " = '15'");
+					idx = 0;
+				}
+				if (infoidx == 1)
+				{	
+					eval(("type") +  " = 'baroque'");
+					eval(("period") + " = '15'");
+					idx = 0;
+				}
+				if (infoidx == 2)
+				{	
+					eval(("type") +  " = 'classicism'");
+					eval(("period") + " = '15'");
+					idx = 0;
+				}	
+				display();
+			}
+			
+			function display()
+			{
+				//change of images and information after function calls.
+				if (eval("period") == "15")
+				{
+					if (eval("type") == "renaissance")
+					{
+						image.src = "images/" + picturearray1[idx];
+						if (picturearray1[idx] == "x")
+						{
+							picname.innerHTML = "No images in this time period.";
+						}
+						else
+						{
+							picname.innerHTML = namearray1[idx];
+						}
+					}
+					
+					else
+					{
+						if (eval("type") == "baroque")
+						{
+							image.src = "images/" + picturearray2[idx];
+							if (picturearray2[idx] == "x")
+							{
+								picname.innerHTML = "No images in this time period.";
+							}
+							else
+							{
+								picname.innerHTML = namearray2[idx];
+							}
+						}
+						else
+						{
+							if (eval("type") == "classicism")
+							{
+								image.src = "images/" + picturearray2[idx];
+								if (picturearray3[idx] == "x")
+								{
+									picname.innerHTML = "No images in this time period.";
+								}
+								else
+								{
+									image.src = "images/" + picturearray3[idx];
+									picname.innerHTML = namearray3[idx];
+								}
+							}
+						}
+					}
+				}
+				if (eval("period") == "16")
+				{
+					if (eval("type") == "renaissance")
+					{
+						image.src = "images/" + picturearray1[idx];
+						if (picturearray1[idx] == "x")
+						{
+							picname.innerHTML = "No images in this time period.";
+						}
+						else
+						{
+							picname.innerHTML = namearray1[idx];
+						}
+					}
+					
+					else
+					{
+						if (eval("type") == "baroque")
+						{
+							image.src = "images/" + picturearray2[idx];
+							if (picturearray2[idx] == "x")
+							{
+								picname.innerHTML = "No images in this time period.";
+							}
+							else
+							{
+								picname.innerHTML = namearray2[idx];
+							}
+						}
+						else
+						{
+							if (eval("type") == "classicism")
+							{
+								image.src = "images/" + picturearray2[idx];
+								if (picturearray3[idx] == "x")
+								{
+									picname.innerHTML = "No images in this time period.";
+								}
+								else
+								{
+									image.src = "images/" + picturearray3[idx];
+									picname.innerHTML = namearray3[idx];
+								}
+							}
+						}
+					}
+				}
+				if (eval("period") == "17")
+				{
+					if (eval("type") == "renaissance")
+					{
+						image.src = "images/" + picturearray1[idx];
+						if (picturearray1[idx] == "x")
+						{
+							picname.innerHTML = "No images in this time period.";
+						}
+						else
+						{
+							picname.innerHTML = namearray1[idx];
+						}
+					}
+					
+					else
+					{
+						if (eval("type") == "baroque")
+						{
+							image.src = "images/" + picturearray2[idx];
+							if (picturearray2[idx] == "x")
+							{
+								picname.innerHTML = "No images in this time period.";
+							}
+							else
+							{
+								picname.innerHTML = namearray2[idx];
+							}
+						}
+						else
+						{
+							if (eval("type") == "classicism")
+							{
+								image.src = "images/" + picturearray3[idx];
+								if (picturearray3[idx] == "x")
+								{
+									picname.innerHTML = "No images in this time period.";
+								}
+								else
+								{
+									image.src = "images/" + picturearray3[idx];
+									picname.innerHTML = namearray3[idx];
+								}
+							}
+						}
+					}
+				}
+				information.innerHTML = infoarray[infoidx];
+				styletype.innerHTML = stylearray[infoidx];
+			}
+			
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<button onclick = "location.href = 'index.html'"> Home </button>
+		</br>
+		<div class = "dropdown">
+			<button class = "dropbutton" onclick = "showmenu()">Filter Time Period</button>
+			<div id = "mydrop" class = "dropcontent">
+				<button onclick = "swappics1()">15th Century</button>
+				<button onclick = "swappics2()">16th Century</button>
+				<button onclick = "swappics3()">17th Century</button>
+			</div>
+		</div>
+		</br>
+		<h1> Europe </h1>
+		</br>
+		<img id = "mainimg" src = "" />
+		</br>
+		<div class = "imgname" id = "name"> </div>
+		</br>
+		<div class = "button1">
+			<button class = "buttons" onclick = "changepictures(-1)"> < </button> &nbsp
+			<button class = "buttons" onclick = "changepictures(1)"> > </button>
+		</div>
+		<hr>
+		<div class = "type" id = "artstyle"> </div>
+		<hr>
+		</br>
+		<div class = "comment" id = "infobox"> </div>
+		</br>
+		</br>
+		<div class = "button2">
+			<button class = "buttons" onclick = "changeinfo(-1)"> < </button> &nbsp
+			<button class = "buttons" onclick = "changeinfo(1)"> > </button>
+		</div>
+	</body>
+	
+
+</html>
+	

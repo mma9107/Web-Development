@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<!-- Max Ma -->
+
+<html>
+	
+	<head> 
+		<title> Africa </title>
+		<link rel="stylesheet" href="pages.css">
+		<script>
+			function initialize()
+			{
+				picturearray1 = ["yuweng.jpg", "masters.jpg", "chinese.jpg", "musician.jpg", "qifu.jpg", "fans.jpg"];
+				picturearray2 = ["hikone.jpg", "woodblock.jpg", "mother.jpg", "lovers.jpg", "wave.jpg", "snow.jpg"];
+				picturearray3 = ["tajmahal.jpg", "preparation.jpg", "rama.jpg", "gundalao.jpg", "x", "x"];
+				namearray1 = ["Landscapes Painted for Yuweng - Fan Qi", "Landscapes after old masters - Wang Hui", "The Chinese Garden - Francois Boucher", "Chinese Musician - Jean Antoine Watteau", "Detail of qifu (imperial dragon robe)", "A pair of ivory fans"];
+				namearray2 = ["The Hikone Screen - Iwasa Matabei", "Early woodblock print - Hishikawa Moronobu", "Midnight: Mother and Sleepy Child - Kitagawa Utamaro", "Lovers Walking in the Snow - Suzuki Harunobu", "The Great Wave - Katsushika Hokusai", "Evening Snow at Kanbara - Utagawa Hiroshige"];
+				namearray3 = ["Taj Mahal - Mughal architecture", "Preparations for a Hunt - Friends of Islamic Art Gifts", "Rama and Lakshmana Visit the Hermitage of an Ascetic - first-generation master after Nainsukh", "The Gundalao Lake - Nihal Chand", "", ""];				
+				infoarray = ["Chinese art started with the most stunning materials such as jade and bronzes to make carvings. Religion affected art such as Confucianism, Daoism, and Buddhism. The Chinese also created pottery using wet clay and cords to make designs. It soon evolved into pictorial decorations such as fish and human faces. Many items began to be carved by jade such as ax heads, knives, and hammer heads, along with decorations such as jade animals. Calligraphy and painting were also key parts of Chinese art. Calligraphy was considered the highest and purest form of painting and was appreciated in court circles.", "Japanese art goes as far back as the tenth century B.C. The Japanese developed their own style of art with a broad spectrum covering painting, origami, wood-block prints, literature, etc. Japanese art also used calligraphy as part of their art. Landscapes and portrayal of life were also a part of Japanese painting. Japanese art also had a rich tradition of theatre, music, and dance. The Edo period is known for the Ukito-e wood-block prings and art of Pleasure Quarters of Kyoto. These works are shown in the finest museums around the world.", "Indian art began in the Paleolithic culture of the Stone Age. Indian art started with rock art and cave art, which was imitated by Hindus. The cultural heritage was rivalled only by Chinese art as it was one of the richest in the world. Painting was of religious dieties and kings. The art was also influenced by Chinese and Ancient Persian painting. Furthermore, Buddhist literature is full of the Iron Age: royal palaces in India, decorated with religious art. However, no such works have survived."];
+				stylearray = ["Chinese", "Japanese", "Indian" ];
+				image = document.getElementById("mainimg");
+				picname = document.getElementById("name");
+				information = document.getElementById("infobox");
+				title = document.getElementById("imgtitle");
+				styletype = document.getElementById("artstyle");
+				idx = 0;
+				period = "17";
+				type = "chinese";
+				infoidx = 0;
+				display();
+			}
+			
+			function showmenu()
+			{
+				document.getElementById("mydrop").classList.toggle("show");
+			}
+			
+			function swappics1()
+			{
+				eval(("period") +  " = '17'");
+				idx = 0;
+				display();
+			}
+			
+			function swappics2()
+			{
+				eval(("period") +  " = '18'");
+				idx = 2;
+				display();
+			}
+			
+			function swappics3()
+			{
+				eval(("period") +  " = '19'");
+				idx = 4;
+				display();
+			}
+			
+			function changepictures(num)
+			{
+				//use of button in order to scroll through images from array for one specific art style in north america
+				idx += num;
+				if (eval("period") == "17")
+				{	
+					if (idx <= 0)
+					{
+						idx = 0;
+					}
+					else
+					{
+						if (idx >= 1)
+						{
+							idx = 1;
+						}
+					}
+				}
+				if (eval("period") == "18")
+				{
+					if (idx <= 2)
+					{
+						idx = 2;
+					}
+					else
+					{
+						if (idx >= 3)
+						{
+							idx = 3;
+						}
+					}
+				}
+				if (eval("period") == "19")
+				{
+					if (idx <= 4)
+					{
+						idx = 4;
+					}
+					else
+					{
+						if (idx >= 5)
+						{	
+							idx = 5;
+						}
+					}
+				}
+				display();
+			}
+			
+			function changeinfo(numb)
+			{
+				//use of button to change the information on art styles in north america
+				
+				infoidx += numb;
+				if (infoidx <= 0)
+				{
+					infoidx = 0;
+					idx = 0;
+				}
+				else
+				{
+					if (infoidx >= 2)
+					{
+						infoidx = 2;
+					}
+				}
+				if (infoidx == 0)
+				{	
+					eval(("type") +  " = 'chinese'");
+					eval(("period") + " = '17'");
+					idx = 0;
+				}
+				if (infoidx == 1)
+				{	
+					eval(("type") +  " = 'japanese'");
+					eval(("period") + " = '17'");
+					idx = 0;
+				}
+				if (infoidx == 2)
+				{	
+					eval(("type") +  " = 'indian'");
+					eval(("period") + " = '17'");
+					idx = 0;
+				}	
+				display();
+			}
+			
+			function display()
+			{
+				//change of images and information after function calls.
+				if (eval("period") == "17")
+				{
+					if (eval("type") == "chinese")
+					{
+						image.src = "images/" + picturearray1[idx];
+						if (picturearray1[idx] == "x")
+						{
+							picname.innerHTML = "No images in this time period.";
+						}
+						else
+						{
+							picname.innerHTML = namearray1[idx];
+						}
+					}
+					
+					else
+					{
+						if (eval("type") == "japanese")
+						{
+							image.src = "images/" + picturearray2[idx];
+							if (picturearray2[idx] == "x")
+							{
+								picname.innerHTML = "No images in this time period.";
+							}
+							else
+							{
+								picname.innerHTML = namearray2[idx];
+							}
+						}
+						else
+						{
+							if (eval("type") == "indian")
+							{
+								image.src = "images/" + picturearray2[idx];
+								if (picturearray3[idx] == "x")
+								{
+									picname.innerHTML = "No images in this time period.";
+								}
+								else
+								{
+									image.src = "images/" + picturearray3[idx];
+									picname.innerHTML = namearray3[idx];
+								}
+							}
+						}
+					}
+				}
+				if (eval("period") == "18")
+				{
+					if (eval("type") == "chinese")
+					{
+						image.src = "images/" + picturearray1[idx];
+						if (picturearray1[idx] == "x")
+						{
+							picname.innerHTML = "No images in this time period.";
+						}
+						else
+						{
+							picname.innerHTML = namearray1[idx];
+						}
+					}
+					
+					else
+					{
+						if (eval("type") == "japanese")
+						{
+							image.src = "images/" + picturearray2[idx];
+							if (picturearray2[idx] == "x")
+							{
+								picname.innerHTML = "No images in this time period.";
+							}
+							else
+							{
+								picname.innerHTML = namearray2[idx];
+							}
+						}
+						else
+						{
+							if (eval("type") == "indian")
+							{
+								image.src = "images/" + picturearray2[idx];
+								if (picturearray3[idx] == "x")
+								{
+									picname.innerHTML = "No images in this time period.";
+								}
+								else
+								{
+									image.src = "images/" + picturearray3[idx];
+									picname.innerHTML = namearray3[idx];
+								}
+							}
+						}
+					}
+				}
+				if (eval("period") == "19")
+				{
+					if (eval("type") == "chinese")
+					{
+						image.src = "images/" + picturearray1[idx];
+						if (picturearray1[idx] == "x")
+						{
+							picname.innerHTML = "No images in this time period.";
+						}
+						else
+						{
+							picname.innerHTML = namearray1[idx];
+						}
+					}
+					
+					else
+					{
+						if (eval("type") == "japanese")
+						{
+							image.src = "images/" + picturearray2[idx];
+							if (picturearray2[idx] == "x")
+							{
+								picname.innerHTML = "No images in this time period.";
+							}
+							else
+							{
+								picname.innerHTML = namearray2[idx];
+							}
+						}
+						else
+						{
+							if (eval("type") == "indian")
+							{
+								image.src = "images/" + picturearray3[idx];
+								if (picturearray3[idx] == "x")
+								{
+									picname.innerHTML = "No images in this time period.";
+								}
+								else
+								{
+									image.src = "images/" + picturearray3[idx];
+									picname.innerHTML = namearray3[idx];
+								}
+							}
+						}
+					}
+				}
+				information.innerHTML = infoarray[infoidx];
+				styletype.innerHTML = stylearray[infoidx];
+			}
+			
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<button onclick = "location.href = 'index.html'"> Home </button>
+		</br>
+		<div class = "dropdown">
+			<button class = "dropbutton" onclick = "showmenu()">Filter Time Period</button>
+			<div id = "mydrop" class = "dropcontent">
+				<button onclick = "swappics1()">17th Century</button>
+				<button onclick = "swappics2()">18th Century</button>
+				<button onclick = "swappics3()">19th Century</button>
+			</div>
+		</div>
+		</br>
+		<h1> Asia </h1>
+		</br>
+		<img id = "mainimg" src = "" />
+		</br>
+		<div class = "imgname" id = "name"> </div>
+		</br>
+		<div class = "button1">
+			<button class = "buttons" onclick = "changepictures(-1)"> < </button> &nbsp
+			<button class = "buttons" onclick = "changepictures(1)"> > </button>
+		</div>
+		<hr>
+		<div class = "type" id = "artstyle"> </div>
+		<hr>
+		</br>
+		<div class = "comment" id = "infobox"> </div>
+		</br>
+		</br>
+		<div class = "button2">
+			<button class = "buttons" onclick = "changeinfo(-1)"> < </button> &nbsp
+			<button class = "buttons" onclick = "changeinfo(1)"> > </button>
+		</div>
+	</body>
+	
+
+</html>
+	

@@ -1,0 +1,88 @@
+body
+{
+	background-color: #E7C6A5;
+}
+	
+.main
+{
+	overflow-x: hidden;
+}
+
+.dropbutton
+{
+	background-color: #86C67C;
+	color: white;
+	font-size: 20px;
+	border: .5px solid black;
+	cursor: pointer;
+}
+			
+.dropdown
+{
+	position: relative;
+	display: inline-block;
+}
+			
+.dropcontent
+{
+	display: none;
+	position: absolute;
+	z-index: 1;
+}
+			
+.show
+{
+	display: block;
+}
+			
+hr
+{
+	border-color: black;
+}
+			
+.type
+{
+	text-align: center;
+	font-size: 25px;
+	font-family: copperplate gothic;
+	font-style: bold;
+	color: green;
+}
+			
+.imgname
+{
+	text-align: center;
+}
+			
+.comment
+{	
+	text-align: center;
+	font-size: 16px;
+	font-family: arial;
+}
+			
+h1
+{
+	text-align: center;
+	color: #009ACD;
+}
+			
+.button1, .button2
+{
+	text-align: center;
+}
+			
+.buttons
+{
+	border: 1px solid black;
+	border-radius: 20px;
+}
+			
+img
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 400px;
+	width: 550px;
+}

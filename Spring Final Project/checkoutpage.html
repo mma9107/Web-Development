@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<!-- Max Ma -->
+
+<html>
+	
+	<head> 
+		<title>	Checkout </title>
+		<style>		</style>
+		<link rel = "stylesheet" type = "text/css" href = "checkout.css">
+		<script src = "items.js" ></script>
+		<script>
+			function initialize()
+			{
+				space = document.getElementById("items");
+				thank = document.getElementById("comment");
+				if(data.hasOwnProperty('iPhoneX'))
+				{
+					if (data.iPhoneX.length > 1)
+					{
+						var amtdiv = document.createElement("div");
+						amtdiv.id = "amount";
+						amtdiv.innerHTML = "Amount = " + data.iPhoneX.length;
+						var div1 = document.createElement("div");
+						space.appendChild(div1);
+						var pic = document.createElement("img");
+						pic.id = "image";
+						pic.src = "images/iphonex.jpg";
+						var div = document.createElement("div");
+						div.id = "size";
+						div.innerHTML = "Size: " + data.iPhoneX[0];
+						div1.appendChild(pic);
+						div1.appendChild(div);
+						div1.appendChild(amtdiv);
+					}
+					else
+					{
+						var div1 = document.createElement("div");
+						space.appendChild(div1);
+						var pic = document.createElement("img");
+						pic.id = "image";
+						pic.src = "images/iphonex.jpg";
+						var div = document.createElement("div");
+						div.id = "size";
+						div.innerHTML = "Size: " + data.iPhoneX;
+						div1.appendChild(pic);
+						div1.appendChild(div);
+					}
+				}
+				if(data.hasOwnProperty('VivoX21'))
+				{
+					if (data.VivoX21.length > 1)
+					{
+						var amtdiv = document.createElement("div");
+						amtdiv.id = "amount";
+						amtdiv.innerHTML = "Amount = " + data.VivoX21.length;
+						var div1 = document.createElement("div");
+						space.appendChild(div1);
+						var pic = document.createElement("img");
+						pic.id = "image";
+						pic.src = "images/vivox21.jpg";
+						var div = document.createElement("div");
+						div.id = "size";
+						div.innerHTML = "Size: " + data.VivoX21[0];
+						div1.appendChild(pic);
+						div1.appendChild(div);
+						div1.appendChild(amtdiv);
+					}
+					else
+					{
+						var div1 = document.createElement("div");
+						space.appendChild(div1);
+						var pic = document.createElement("img");
+						pic.id = "image";
+						pic.src = "images/vivox21.jpg";
+						var div = document.createElement("div");
+						div.id = "size";
+						div.innerHTML = "Size: " + data.VivoX21;
+						div1.appendChild(pic);
+						div1.appendChild(div);
+					}
+				}
+				if(data.hasOwnProperty('SamsungS9'))
+				{
+					if (data.SamsungS9.length > 1)
+					{
+						var amtdiv = document.createElement("div");
+						amtdiv.id = "amount";
+						amtdiv.innerHTML = "Amount = " + data.SamsungS9.length;
+						var div1 = document.createElement("div");
+						space.appendChild(div1);
+						var pic = document.createElement("img");
+						pic.id = "image";
+						pic.src = "images/samsungs9.jpg";
+						var div = document.createElement("div");
+						div.id = "size";
+						div.innerHTML = "Size: " + data.SamsungS9[0];
+						div1.appendChild(pic);
+						div1.appendChild(div);
+						div1.appendChild(amtdiv);
+					}
+					else
+					{
+						var div1 = document.createElement("div");
+						space.appendChild(div1);
+						var pic = document.createElement("img");
+						pic.id = "image";
+						pic.src = "images/samsungs9.jpg";
+						var div = document.createElement("div");
+						div.id = "size";
+						div.innerHTML = "Size: " + data.SamsungS9;
+						div1.appendChild(pic);
+						div1.appendChild(div);
+					}
+				}
+				if(data.hasOwnProperty('Nokia8'))
+				{
+					if (data.Nokia8.length > 1)
+					{
+						var amtdiv = document.createElement("div");
+						amtdiv.id = "amount";
+						amtdiv.innerHTML = "Amount = " + data.Nokia8.length;
+						var div1 = document.createElement("div");
+						space.appendChild(div1);
+						var pic = document.createElement("img");
+						pic.id = "image";
+						pic.src = "images/nokia8.jpg";
+						var div = document.createElement("div");
+						div.id = "size";
+						div.innerHTML = "Size: " + data.Nokia8[0];
+						div1.appendChild(pic);
+						div1.appendChild(div);
+						div1.appendChild(amtdiv);
+					}
+					else
+					{
+						var div1 = document.createElement("div");
+						space.appendChild(div1);
+						var pic = document.createElement("img");
+						pic.id = "image";
+						pic.src = "images/nokia8.jpg";
+						var div = document.createElement("div");
+						div.id = "size";
+						div.innerHTML = "Size: " + data.Nokia8;
+						div1.appendChild(pic);
+						div1.appendChild(div);
+					}
+				}
+				if(data.hasOwnProperty('Pixel2'))
+				{
+					if (data.Pixel2.length > 1)
+					{
+						var amtdiv = document.createElement("div");
+						amtdiv.id = "amount";
+						amtdiv.innerHTML = "Amount = " + data.Pixel2.length;
+						var div1 = document.createElement("div");
+						space.appendChild(div1);
+						var pic = document.createElement("img");
+						pic.id = "image";
+						pic.src = "images/pixel2.jpg";
+						var div = document.createElement("div");
+						div.id = "size";
+						div.innerHTML = "Size: " + data.Pixel2[0];
+						div1.appendChild(pic);
+						div1.appendChild(div);
+						div1.appendChild(amtdiv);
+					}
+					else
+					{
+						var div1 = document.createElement("div");
+						space.appendChild(div1);
+						var pic = document.createElement("img");
+						pic.id = "image";
+						pic.src = "images/pixel2.jpg";
+						var div = document.createElement("div");
+						div.id = "size";
+						div.innerHTML = "Size: " + data.Pixel2;
+						div1.appendChild(pic);
+						div1.appendChild(div);
+					}
+				}
+			}
+			
+			function clearStorage()
+			{
+				localStorage.clear();
+				thank.innerHTML = "Thank you for shopping at Tech Smart!";
+			}
+
+		</script>
+	</head>
+	<body onload = "initialize();">
+	<img id = "bann" src = "images/techsmartbanner.png" />
+		<div id = "items">
+			
+		</div>
+		<form action = "productpage.html" onsubmit = "clearStorage()" >
+			<input id = "purch" type = "submit" value = "Purchase" />
+		</form>
+		<div id = "comment"></div>
+	</body>
+	
+
+</html>
+	

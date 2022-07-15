@@ -1,0 +1,437 @@
+<!DOCTYPE HTML>
+<!-- Max Ma -->
+
+<html>
+	
+	<head> 
+		<title>	Product Page </title>
+		<style>
+		</style>
+		<link rel = "stylesheet" type = "text/css" href = "main.css">
+		<link rel = "stylesheet" type = "text/css" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src = "items.js" ></script>
+		<script src = "utilities.js" ></script>
+		<script>
+			function initialize()
+			{
+				banner = document.getElementById("bann");
+				cart = document.getElementById("crtnum");
+				main = document.getElementById("pict");
+				title = document.getElementById("ttl");
+				price = document.getElementById("prc");
+				info = document.getElementById("inform");
+				options = document.getElementById("opts");
+				sizes = document.getElementById("sizs");
+				contain = document.getElementById("container");
+				rev = document.getElementById("userRev");
+				stars = document.getElementById("staropts");
+				relatecont = document.getElementById("relateditems");
+				checkout = document.getElementById("buy");
+				item = {};
+				
+				if (location.search.length !== 0)
+				{
+					var query = location.search.substring(1);
+					var incoming = query.split("=");
+					var name = incoming[0].split("+");
+					var constant = name.length-1
+					var str = "";
+					var rand = 0;
+					var num = 0;
+					for (i = 0; i < constant; i++)
+					{
+						str += name[0] + " ";
+						name.shift();
+					}
+					for (j = 0; j < TITLE.length; j++)
+					{
+						if (str == TITLE[j])
+						{
+							mainitem = { "name":TITLE[j], "pic":IMAGE[j], "desc":DESC[j], "price":PRICE[j] };
+							rand = j;
+							genpage();
+						}
+					}
+					TITLE.splice(rand, 1);
+					IMAGE.splice(rand, 1);
+					DESC.splice(rand, 1);
+					PRICE.splice(rand, 1);	
+				}
+				else
+				{
+					var rand = getRandomInteger(0,4);
+					mainitem = { "name":TITLE[rand], "pic":IMAGE[rand], "desc":DESC[rand], "price":PRICE[rand] };
+					genpage();
+					TITLE.splice(rand, 1);
+					IMAGE.splice(rand, 1);
+					DESC.splice(rand, 1);
+					PRICE.splice(rand, 1);
+				}
+				var items = [];
+				for (i = 0; i < TITLE.length; i++)
+				{
+					items[i] = { "name":TITLE[i], "pic":IMAGE[i], "desc":DESC[i], "price":PRICE[i] };
+					var div1 = document.createElement("div");
+					div1.style.display = "inline-block";
+					div1.style.marginRight = "50px";
+					relatecont.appendChild(div1);
+					var related = document.createElement("input");
+					related.setAttribute("id", "re" + i);
+					related.setAttribute("type", "image");
+					related.setAttribute("src", "images/" + items[i].pic);
+					related.setAttribute("name", items[i].name);
+					related.style.width = "175px";
+					related.style.height = "200px";
+					div1.appendChild(related);
+					var br = document.createElement("br");
+					div1.appendChild(br);
+					var relatedname = document.createElement("input");
+					relatedname.style.background = "none";
+					relatedname.style.border = "none";
+					relatedname.style.padding = "0";
+					relatedname.setAttribute("type", "submit");
+					relatedname.setAttribute("name", items[i].name);
+					relatedname.value = items[i].name;
+					div1.appendChild(relatedname);
+					var br1 = document.createElement("br");
+					div1.appendChild(br1);
+					var relatedprice = document.createElement("input");
+					relatedprice.style.background = "none";
+					relatedprice.style.border = "none";
+					relatedprice.style.padding = "0";
+					relatedprice.setAttribute("type", "submit");
+					relatedprice.setAttribute("name", items[i].name);
+					relatedprice.value = items[i].price;
+					div1.appendChild(relatedprice);
+					var br2 = document.createElement("br");
+					div1.appendChild(br2);
+				}
+					
+				if (rand == 0)
+				{
+					var rateconstant = 0;
+					var revconstant = 1;
+					for (w = 0; w < (REVS1.length / 2); w++)
+					{
+						var rate = Number(REVS1[rateconstant]);
+						for (x = 0; x < rate; x++)
+						{
+							var star = document.createElement("span");
+							star.setAttribute("class", "fa fa-star checked");
+							contain.appendChild(star);
+						}
+						var review = document.createElement("div");
+						contain.appendChild(review);
+						review.innerHTML = REVS1[revconstant];
+						var br = document.createElement("br");
+						contain.appendChild(br);
+						revconstant += 2;
+						rateconstant += 2;
+					}
+				}
+				if (rand == 1)
+				{
+					var rateconstant = 0;
+					var revconstant = 1;
+					for (w = 0; w < (REVS2.length / 2); w++)
+					{
+						var rate = Number(REVS2[rateconstant]);
+						for (x = 0; x < rate; x++)
+						{
+							var star = document.createElement("span");
+							star.setAttribute("class", "fa fa-star checked");
+							contain.appendChild(star);
+						}
+						var review = document.createElement("div");
+						contain.appendChild(review);
+						review.innerHTML = REVS2[revconstant];
+						var br = document.createElement("br");
+						contain.appendChild(br);
+						revconstant += 2;
+						rateconstant += 2;
+					}
+				}
+				if (rand == 2)
+				{
+					var rateconstant = 0;
+					var revconstant = 1;
+					for (w = 0; w < (REVS3.length / 2); w++)
+					{
+						var rate = Number(REVS3[rateconstant]);
+						for (x = 0; x < rate; x++)
+						{
+							var star = document.createElement("span");
+							star.setAttribute("class", "fa fa-star checked");
+							contain.appendChild(star);
+						}
+						var review = document.createElement("div");
+						contain.appendChild(review);
+						review.innerHTML = REVS3[revconstant];
+						var br = document.createElement("br");
+						contain.appendChild(br);
+						revconstant += 2;
+						rateconstant += 2;
+					}
+				}
+				if (rand == 3)
+				{
+					var rateconstant = 0;
+					var revconstant = 1;
+					for (w = 0; w < (REVS4.length / 2); w++)
+					{
+						var rate = Number(REVS4[rateconstant]);
+						for (x = 0; x < rate; x++)
+						{
+							var star = document.createElement("span");
+							star.setAttribute("class", "fa fa-star checked");
+							contain.appendChild(star);
+						}
+						var review = document.createElement("div");
+						contain.appendChild(review);
+						review.innerHTML = REVS4[revconstant];
+						var br = document.createElement("br");
+						contain.appendChild(br);
+						revconstant += 2;
+						rateconstant += 2;
+					}
+				}
+				if (rand == 4)
+				{
+					var rateconstant = 0;
+					var revconstant = 1;
+					for (w = 0; w < (REVS5.length / 2); w++)
+					{
+						var rate = Number(REVS5[rateconstant]);
+						for (x = 0; x < rate; x++)
+						{
+							var star = document.createElement("span");
+							star.setAttribute("class", "fa fa-star checked");
+							contain.appendChild(star);
+						}
+						var review = document.createElement("div");
+						contain.appendChild(review);
+						review.innerHTML = REVS5[revconstant];
+						var br = document.createElement("br");
+						contain.appendChild(br);
+						revconstant += 2;
+						rateconstant += 2;
+					}
+				}
+			}
+			
+			function genpage()
+			{
+				main.src = "images/" + mainitem.pic;
+				title.innerHTML = mainitem.name;
+				price.innerHTML = mainitem.price;
+				info.innerHTML = mainitem.desc;
+				cart.innerHTML = localStorage.getItem("cart");
+			}			
+			
+			function postRev(rate, text)
+			{
+				var numstars = Number(rate);
+				for (y = 0; y < numstars; y++)
+				{
+					var star = document.createElement("span");
+					star.setAttribute("class", "fa fa-star checked");
+					contain.appendChild(star);
+				}
+				var review = document.createElement("div");
+				contain.appendChild(review);
+				review.innerHTML = text;
+				var br = document.createElement("br");
+				contain.appendChild(br);
+				stars.value = "1";
+				rev.value = "";
+			}
+			
+			function storeLocal(num, cap)
+			{
+				var count = 0;
+				if (mainitem.name == "iPhone X ")
+				{
+					for (i = 0; i < num; i++)
+					{
+						localStorage.setItem("phone" + count, "iphoneX");
+						localStorage.setItem("amount" + count, num);
+						localStorage.setItem("size" + count, cap);
+						count++;
+					}
+					localStorage.setItem("cart", Number(localStorage.getItem("cart")) + count);
+					cart.innerHTML = localStorage.getItem("cart");
+					options.value = "1";
+					sizes.value = "64gb";
+				}
+				if (mainitem.name == "Samsung Galaxy S9 ")
+				{
+					for (i = 0; i < num; i++)
+					{
+						localStorage.setItem("phone" + count, "samsungS9");
+						localStorage.setItem("amount" + count, num);
+						localStorage.setItem("size" + count, cap);
+						count++;
+					}
+					localStorage.setItem("cart", Number(localStorage.getItem("cart")) + count);
+					cart.innerHTML = localStorage.getItem("cart");
+					options.value = "1";
+					sizes.value = "64gb";
+				}
+				if (mainitem.name == "Vivo X21 ")
+				{
+					for (i = 0; i < num; i++)
+					{
+						localStorage.setItem("phone" + count, "vivoX21");
+						localStorage.setItem("amount" + count, num);
+						localStorage.setItem("size" + count, cap);
+						count++;
+					}
+					localStorage.setItem("cart", Number(localStorage.getItem("cart")) + count);
+					cart.innerHTML = localStorage.getItem("cart");
+					options.value = "1";
+					sizes.value = "64gb";
+				}
+				if (mainitem.name == "Nokia 8 ")
+				{
+					
+					for (i = 0; i < num; i++)
+					{
+						localStorage.setItem("phone" + count, "nokia8");
+						localStorage.setItem("amount" + count, num);
+						localStorage.setItem("size" + count, cap);
+						count++;
+					}
+					localStorage.setItem("cart", Number(localStorage.getItem("cart")) + count);
+					cart.innerHTML = localStorage.getItem("cart");
+					options.value = "1";
+					sizes.value = "64gb";
+				}
+				if (mainitem.name == "Google Pixel 2 ")
+				{
+					for (i = 0; i < num; i++)
+					{
+						localStorage.setItem("phone" + count, "pixel2");
+						localStorage.setItem("amount" + count, num);
+						localStorage.setItem("size" + count, cap);
+						count++;
+					}
+					localStorage.setItem("cart", Number(localStorage.getItem("cart")) + count);
+					cart.innerHTML = localStorage.getItem("cart");
+					options.value = "1";
+					sizes.value = "64gb";
+				}
+			}
+			
+			function removeLocal()
+			{
+				
+				localStorage.clear()
+				cart.innerHTML = localStorage.getItem("cart"); 
+				delete item.name;
+				item = {"name": ""};
+				
+			}
+			
+			function makeData(size)
+			{
+				for (i = 0; i < Number(localStorage.getItem("cart")); i++)
+				{
+					
+					item.name =  localStorage.getItem("phone"+ i) + i;
+					if (item.name == "iphoneX" + i)
+					{
+						var itemname = document.createElement("input");
+						itemname.setAttribute("type", "hidden");
+						itemname.setAttribute("name", "iPhoneX");
+						itemname.setAttribute("value", size);
+					} 
+					if (item.name == "vivoX21" + i)
+					{
+						var itemname = document.createElement("input");
+						itemname.setAttribute("type", "hidden");
+						itemname.setAttribute("name", "VivoX21");
+						itemname.setAttribute("value", size);
+					} 
+					if (item.name == "samsungS9" + i)
+					{
+						var itemname = document.createElement("input");
+						itemname.setAttribute("type", "hidden");
+						itemname.setAttribute("name", "SamsungS9");
+						itemname.setAttribute("value", size);
+					}
+					if (item.name == "nokia8" + i)
+					{
+						var itemname = document.createElement("input");
+						itemname.setAttribute("type", "hidden");
+						itemname.setAttribute("name", "Nokia8");
+						itemname.setAttribute("value", size);
+					} 
+					if (item.name == "pixel2" + i)
+					{
+						var itemname = document.createElement("input");
+						itemname.setAttribute("type", "hidden");
+						itemname.setAttribute("name", "Pixel2");
+						itemname.setAttribute("value", size);
+					} 
+					
+					checkout.appendChild(itemname);
+				}
+			}
+			
+		</script>
+	</head>
+	<body onload = "initialize();" >
+		<img id = "bann" src = "images/techsmartbanner.png" />
+		<img id = "cart" src = "images/cart.png" onclick = "removeLocal();" /> 
+		<span id = "crtnum">0</span>
+		<br />
+		<img id = "pict" src = "" />
+		<h2 id = "ttl"> </h2>
+		<div id = "controls">
+			<span id = "prc"> </span>
+			<select id = "opts" name = "amtbox">
+				<option value = "1">1</option>
+				<option value = "2">2</option>
+				<option value = "3">3</option>
+				<option value = "4">4</option>
+				<option value = "5">5</option>
+			</select>
+			<select id = "sizs" name = "sizbox">
+				<option value = "64gb">64GB</option>
+				<option value = "256gb">256GB</option>
+			</select>
+			<input type = "button" value = "Add To Cart" onclick = "storeLocal(options.value, sizes.value);" />
+		</div>
+		<div id = "inform"> </div>
+		<form id = "buy" method = "post" action = "checkoutpage.html" name = "checkout" onsubmit = "makeData(sizes.value);" >
+			<input type = "hidden" name = "test" value = "3" />
+			<input id = "purch" type = "submit" value = "Checkout" />
+		</form>
+		<h1 id = "revs"> REVIEWS </h1>
+		<div id = "container">
+		
+		</div>
+		<br />
+		<select id = "staropts" name = "starbox">
+			<option value = "1">1</option>
+			<option value = "2">2</option>
+			<option value = "3">3</option>
+			<option value = "4">4</option>
+			<option value = "5">5</option>
+		</select> Stars
+		<br />
+		<br />
+		<textarea id = "userRev" name = "txtbox">
+		</textarea>
+		<br />
+		<input type = "button" value = "Post Review" onclick = "postRev(stars.value, rev.value);" />
+		<br />
+		<h1> RELATED ITEMS </h1>
+		<form id = "relateditems" action = "productpage.html">
+			
+		</form>
+	</body>
+	
+
+</html>
+	

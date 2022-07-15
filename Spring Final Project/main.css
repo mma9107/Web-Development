@@ -1,0 +1,68 @@
+body
+{
+	background-color: lightblue;
+}
+
+#bann
+{
+	width: 100%;
+	height: 135px;
+}
+
+#cart
+{
+	position: absolute;
+	top: 160px;
+	right: 35px;
+	width: 30px;
+	height: 30px;
+}
+
+#crtnum
+{
+	position: absolute;
+	top: 167px;
+	right: 20px;
+}
+
+#pict
+{
+	width: 375px;
+	height: 450px;
+}
+
+h2
+{
+	position: absolute;
+	display: inline-block;
+	top: 160px;
+	left: 400px;
+}
+
+#controls
+{
+	position: absolute;
+	display: inline-block;
+	top: 220px;
+	left: 400px;
+}
+
+#inform
+{
+	position: absolute;
+	display: inline-block;
+	top: 260px;
+	left: 400px;
+}
+
+#purch
+{
+	position: relative;
+	left: 400px;
+	bottom: 50px;
+}
+
+.checked
+{
+	color: yellow;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<!-- Max Ma -->
+
+<html>
+	
+	<head> 
+		<title> Login </title>
+		<style>	
+			#comment
+			{
+				color: blue;
+				font-weight: bold;
+			}
+		</style>
+		<script>
+			function initialize()
+			{
+				logform = document.getElementById("log");
+			}
+			
+		</script>
+	</head>
+	<body onload = "initialize();">
+		<span id = "comment" >Please Log In</span>
+		<br />
+		<br />
+		<form id = "log" method = "post" action = "productpage.html" name = "login">
+			Username: <input type = "text" name = "uname" />
+			Password: <input type = "text" name = "pword" />
+			<input type = "hidden" name = "test" value = "1" />
+			<input type = "submit" value = "Login" />
+		</form>
+		<br />
+		<a href = "registration.html">Register Here!</a>
+	</body>
+	
+
+</html>
+	

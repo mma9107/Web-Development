@@ -1,0 +1,80 @@
+body
+{
+	background-image: url("gamebgnd.jpg");
+}
+
+h2
+{
+	color: red;
+}
+
+#sidetitle
+{
+	position: absolute;
+	display: inline-block;
+	font-weight: bold;
+	font-family: copperplate gothic;
+	top: 175px;
+	left: 180px;
+	color: blue;
+}
+
+#sidetitle2
+{
+	position: absolute;
+	display: inline-block;
+	font-weight: bold;
+	font-family: copperplate gothic;
+	top: 175px;
+	left: 650px;
+	color: blue;
+}
+
+#comment
+{
+	color: lightblue;
+}
+
+.userDeck
+{
+	position: relative;
+	top: 100px;
+	left: 200px;
+}
+
+.compDeck
+{
+	position: relative;
+	top: 100px;
+	left:600px;
+}
+
+#userCardPile
+{
+	position: absolute;
+	top: 270px;
+	left: 240px;
+}
+
+#compCardPile
+{
+	position: absolute;
+	top: 270px;
+	left: 735px;
+}
+
+.box
+{
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	text-align: center;
+}
+
+#score
+{
+	font-size: 25px;
+	font-family: arial;
+	font-weight: bold;
+	color: red;
+}

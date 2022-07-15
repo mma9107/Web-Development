@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+
+		<title>War Card Game</title>
+		<link rel = "stylesheet" href = "war.css" />
+		<script src = "info2-26.js"></script>
+		<script>
+			function initialize()
+			{
+				itemList = [];
+			
+				
+				buildData();
+				
+				ROUND = 0;
+				playerscore = 0;
+				computerscore = 0;
+				
+				userDeck = []; //user's deck of cards
+				compDeck = [];
+				shufflecom = document.getElementById("comment");
+				CardPile = document.getElementById("userCardPile");
+				CompPile = document.getElementById("compCardPile");
+				ScoreKeep = document.getElementById("score");
+			}
+		
+			
+			function buildData()
+			{
+				itemArray = info.split(";");
+				
+				for (var i=0; i<itemArray.length; i++)
+				{
+					item = {};
+					itemParts = itemArray[i].split(":");
+					
+					item.itemValue = itemParts[VALUE];
+					item.itemInfo = itemParts[SUIT];
+					item.itemImage = itemParts[SOURCE];
+					
+					itemList.push(item);
+				}
+
+			}
+
+			function flipTop()
+			{
+				if (ROUND > 0)
+				{
+					while (CardPile.hasChildNodes())
+					{
+						CardPile.removeChild(CardPile.lastChild);
+					}
+					while (CompPile.hasChildNodes())
+					{
+						CompPile.removeChild(CompPile.lastChild);
+					}
+				}
+				var newImg = document.createElement("img");
+				usertrans = userDeck[0];
+				newImg.src = userDeck[0].itemImage;
+				playercard = userDeck[0].itemValue;
+				CardPile.appendChild(newImg);
+				userDeck.shift();
+					
+				var newCompImg = document.createElement("img");
+				comptrans = compDeck[0];
+				newCompImg.src = compDeck[0].itemImage;
+				compcard = compDeck[0].itemValue;
+				CompPile.appendChild(newCompImg);
+				compDeck.shift();
+
+				checkWinner(playercard, compcard);
+			}
+			
+				
+			function genRandomNum(X)						
+			{
+
+				randNum = (Math.random() * X);
+				randNum = parseInt(randNum);
+			}
+
+			function splitToDecks() 
+			{
+				if (itemList.length>0)
+				{
+					/*gives 26 random cards to user*/
+					for (var i = 0;i<26;i++)
+					{
+						genRandomNum(52-i);
+						userDeck.push(itemList[randNum]);
+						itemList.splice(randNum,1);
+					}
+					/*gives 26 random cards to computer*/
+					for (var x = 0;x<26;x++)
+					{
+						genRandomNum(26 - x);
+						compDeck.push(itemList[randNum]);
+						itemList.splice(randNum,1);
+					}
+					shufflecom.innerHTML = "The decks have been shuffled!";
+				}
+				else
+				{
+					return null;
+				}
+			}
+			
+			function checkWinner(player, comp)
+			{
+				if (Number(player) > Number(comp))
+				{
+					userDeck.push(comptrans);
+					playerscore++;
+				}
+				else
+				{
+					if (Number(comp) > Number(player))
+					{
+						compDeck.push(usertrans);
+						computerscore++;
+					}
+					else
+					{
+						if (Number(player) == Number(comp))
+						{
+							war();
+						}
+					}
+				}
+				ROUND++
+				updateCount();
+			}
+			
+			function war()
+			{
+				if (userDeck.length < 4 || compDeck.length < 4)
+				{
+					for (i = 0; i < userDeck.length - 1; i++)
+					{
+						var newwarImg = document.createElement("img");
+						newwarImg.src = "back-blue-75-1.png";
+						CardPile.appendChild(newwarImg);
+						userDeck.shift();
+					}
+					
+					var newwarImg = document.createElement("img");
+					userwartrans = userDeck[0];
+					newwarImg.src = userDeck[0].itemImage;
+					playercard = userDeck[0].itemValue;
+					CardPile.appendChild(newwarImg);
+					userDeck.shift();
+					
+					for (x = 0; x < compDeck.length - 1; x++)
+					{
+						var newwarCompImg = document.createElement("img");
+						newwarCompImg.src = "back-blue-75-1.png";
+						CompPile.appendChild(newwarCompImg);
+						compDeck.shift();
+					}
+					
+					var newwarCompImg = document.createElement("img");
+					compwartrans = compDeck[0];
+					newwarCompImg.src = compDeck[0].itemImage;
+					compcard = compDeck[0].itemValue;
+					CompPile.appendChild(newwarCompImg);
+					compDeck.shift();
+				}
+				else
+				{
+					for (x = 0; x < 3; x++)
+					{
+						var newwarImg = document.createElement("img");
+						newwarImg.src = "back-blue-75-1.png";
+						CardPile.appendChild(newwarImg);
+						userDeck.shift();
+				
+						var newwarCompImg = document.createElement("img");
+						newwarCompImg.src = "back-blue-75-1.png";
+						CompPile.appendChild(newwarCompImg);
+						compDeck.shift();
+					}
+				
+					var newwarImg = document.createElement("img");
+					userwartrans = userDeck[0];
+					newwarImg.src = userDeck[0].itemImage;
+					playercard = userDeck[0].itemValue;
+					CardPile.appendChild(newwarImg);
+					userDeck.shift();
+				
+					var newwarCompImg = document.createElement("img");
+					compwartrans = compDeck[0];
+					newwarCompImg.src = compDeck[0].itemImage;
+					compcard = compDeck[0].itemValue;
+					CompPile.appendChild(newwarCompImg);
+					compDeck.shift();
+				}
+				
+				checkWinner(playercard, compcard);
+			}
+
+			function updateCount()
+			{
+				if (userDeck.length == 0 || compDeck.length == 0)
+				{
+					if (playerscore > computerscore)
+					{
+						ScoreKeep.innerHTML = "Player Wins!";
+					}
+					else
+					{	
+						if (computerscore > playerscore)
+						{
+							ScoreKeep.innerHTML = "Computer Wins!";
+						}
+						else
+						{
+							if (computerscore == playerscore)
+							{
+								ScoreKeep.innerHTML = "It's a Tie!";
+							}
+						}
+					}
+				}
+				else
+				{
+					ScoreKeep.innerHTML = "Player Wins: " + playerscore + " | "+ "Computer Wins: " + computerscore;
+				}
+			}
+		</script>
+	</head>
+		
+	<body onload = "initialize();">
+	<h2>Please Shuffle before Playing!</h3>
+	<button onclick = "splitToDecks()">Shuffle and Split</button>
+	<br/>
+	<span id = "comment"></span>
+	</br>
+	<span id = "sidetitle">
+		<h3>Player Cards</h3>
+	</span>
+	<span id = "sidetitle2">
+		<h3>Computer Cards</h3>
+	</span>
+	<br />
+	<img class = "userDeck" src = "back-blue-75-1.png" onclick = "flipTop()";>
+	<img class = "userCard" />
+	<img class = "compCard" />
+	<img class = "compDeck" src = "back-blue-75-1.png";/>
+	<br/>
+	<span id = "userCardPile"></span>
+	<span id = "compCardPile"></span>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	<div class = "box">
+		<span id = "score"></span>
+	</div>
+	<body>
+</html>
+
+<!--
+
+Plan:
+- have 2 card backs which represent 1 user deck and 1 computer deck DONE
+1. user clicks "Shuffle and Split Deck" to shuff and shuffle and split into 2 decks DONE
+2. user clicks the top of their decks and the first card (index = 0) is flipped/revealed/placed in the middle
+3. the computer simultaneously flip its fist card as well
+4. the 2 cards are compared - whomever has the higher card collects both (places the two faced-up cards below its deck)
+5. "Computer/You collect the cards!" (or something along the lines of this)
+6. If there is a tie, then battle it out in WAR by taking out 3 more cards EACH FACED DOWN. Each then adds a 4th card and flips it face up - this will determine who wins this war. Whomever wins will take all of the cards in the middle. place them face up in the pile.
+7. 
+
+
